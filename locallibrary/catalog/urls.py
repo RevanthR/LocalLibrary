@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path,include
 from . import views
 
 urlpatterns = [
@@ -8,3 +8,4 @@ urlpatterns = [
     path('authors/',views.AuthorListView.as_view(),name='author'),
     path('authors/<int:pk>', views.AuthorDetailview.as_view(),name='author-detail'),
 ]
+
