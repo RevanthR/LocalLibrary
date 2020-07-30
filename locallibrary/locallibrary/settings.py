@@ -70,6 +70,8 @@ TEMPLATES = [
     },
 ]
 LOGIN_REDIRECT_URL = '/'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 WSGI_APPLICATION = 'locallibrary.wsgi.application'
 
 
