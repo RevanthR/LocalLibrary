@@ -40,6 +40,7 @@ class AuthorListView(LoginRequiredMixin, generic.ListView):
 class AuthorDetailview(LoginRequiredMixin, generic.DetailView):
     model = Author
     template_name = 'author_detail.html'
+    
 class LoanedBooksByUserListView(LoginRequiredMixin,generic.ListView):
     """Generic class-based view listing books on loan to current user."""
     model = BookInstance
