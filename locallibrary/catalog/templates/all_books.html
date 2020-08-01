@@ -11,6 +11,7 @@
                     <th scope="col">Book Name</th>
                     <th scope="col">Author</th>
                     <th scope="col">Borrower</th>
+                    <th scope="col">Due Back Date</th>
                     <th>Renew</th>
                     </tr>
                 </thead>
@@ -20,6 +21,7 @@
                         <th scope="row"><a href="{{inst.book.get_absolute_url}}">{{inst.book}}</a></th>
                         <td>{{inst.book.author}}</td>
                         <td>{{inst.borrower}}</td>
+                        <td>{{inst.due_back}}</td>
                         <td><a href="{% url 'renew-book-librarian' inst.id %}">Renew</a></td>
                     </tr>
                     {% endfor %}
