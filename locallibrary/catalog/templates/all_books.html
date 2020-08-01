@@ -1,0 +1,34 @@
+{% extends 'base_generic.html' %}
+{% block content %}
+    <div class="row">
+        <h1 style="margin:10px auto; padding: 20px;">All Borrowed Books</h1>
+    </div>
+    <div class="row">
+        {% if bookinstance_list %}
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">Book Name</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Borrower</th>
+                    <th>Renew</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for inst in bookinstance_list %}
+                    <tr>
+                        <th scope="row"><a href="{{inst.book.get_absolute_url}}">{{inst.book}}</a></th>
+                        <td>{{inst.book.author}}</td>
+                        <td>{{inst.borrower}}</td>
+                        <td><a href="{% url 'renew-book-librarian' inst.id %}">Renew</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>
+                There are no books to display
+            </p>
+    {% endif %}
+    </div>
+{% endblock%}
