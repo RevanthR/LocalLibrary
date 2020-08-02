@@ -2,23 +2,26 @@
 {%block title %}<title> Author Detail </title> {% endblock %}
 
 {% block content %}
-    <h1>This is the author detail view</h1>
+    <div class="row">
+        <h1 style="margin:10px auto; padding: 20px;">{{ author.last_name }} {{ author.first_name }}</h1>
+    </div>
 
-  <p><strong>First Name:</strong> <a>{{ author.first_name }}</a></p> <!-- author detail link not yet defined -->
-  <p><strong>Last Name:</strong> {{ author.last_name }}</p>
-  <p><strong>Date of Birth </strong> {{ author.date_of_birth }}</p> 
-  <p><strong>Died</strong> {{ author.date_of_death }}</p>  
-  <!-- <p><strong>Genre:</strong> {{ book.genre.all|join:", " }}</p>   -->
+    <p><strong>First Name:</strong> <a>{{ author.first_name }}</a></p> <!-- author detail link not yet defined -->
+    <p><strong>Last Name:</strong> {{ author.last_name }}</p>
+    <p><strong>Date of Birth </strong> {{ author.date_of_birth }}</p> 
+    <p><strong>Died</strong> {{ author.date_of_death }}</p>  
+    <!-- <p><strong>Genre:</strong> {{ book.genre.all|join:", " }}</p>   -->
 
-  <div style="margin-left:20px;margin-top:20px">
-    <h4>Books</h4>
-    {% for book in author.book_set.all %}
-        <p>
-            {{book.title}}
-        </p>
-    {% endfor %}
-    {% if perms.catalog.can_mark_returned %}
-    <a href="{% url 'author-update' author.pk %}">Update Author Details</a> <br/>
-    <a href="{% url 'author-delete' author.pk %}">Delete Author</a>
-    {% endif %}
-{%  endblock %}
+    <div style="margin-top:20px">
+        <h4>Books</h4>
+        {% for book in author.book_set.all %}
+            <p>
+                {{book.title}}
+            </p>
+        {% endfor %}
+    </div>
+        {% if perms.catalog.can_mark_returned %}
+        <a href="{% url 'author-update' author.pk %}">Update Author Details</a> <br/>
+        <a href="{% url 'author-delete' author.pk %}">Delete Author</a>
+        {% endif %}
+{% endblock %}

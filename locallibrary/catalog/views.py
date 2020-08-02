@@ -87,7 +87,7 @@ def renew_book_librarian(request, pk):
 class AllBooksListView(PermissionRequiredMixin,generic.ListView):
     permission_required = 'catalog.can_mark_returned'
     model = BookInstance
-    template_name = 'all_books.html'
+    template_name = 'all_books_inst.html'
 
 class AuthorCreate(PermissionRequiredMixin, CreateView):
     permission_required = 'catalog.can_mark_returned'
@@ -116,3 +116,8 @@ class BookDelete(PermissionRequiredMixin,DeleteView):
     model = Book
     permission_required = 'catalag.can_mark_returned'
     success_url = reverse_lazy('all-books')
+
+class BorrowBook(PermissionRequiredMixin,generic.ListView):
+    model = Book
+    permission_required = 'catalog.can_loan_book'
+    template_name = 'book_list.html'

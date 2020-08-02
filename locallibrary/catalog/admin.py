@@ -22,7 +22,7 @@ class BooksInstanceInline(admin.TabularInline):
     model = BookInstance
 @admin.register(Book) #similar to the admin.site.register
 class BookAdmin(admin.ModelAdmin):
-    list_display = ('title','author','display_genre')
+    list_display = ('title','author','display_genre','Copies')
     inlines = [BooksInstanceInline]
 
 @admin.register(BookInstance)
