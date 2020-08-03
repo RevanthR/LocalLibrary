@@ -25,7 +25,7 @@
                 <td>{{book.author}}</td>
                 <td>Available</td>
                 {% if perms.catalog.can_loan_book %}
-                    <td><a href="">Borrow</a></td> 
+                    <td><a href="{url 'borrow-book' book.id }">Borrow</a></td> 
                 {% endif %}            
             </tr>
             {% endfor %}

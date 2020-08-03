@@ -118,6 +118,6 @@ class BookDelete(PermissionRequiredMixin,DeleteView):
     success_url = reverse_lazy('all-books')
 
 class BorrowBook(PermissionRequiredMixin,generic.ListView):
-    model = Book
-    permission_required = 'catalog.can_loan_book'
-    template_name = 'book_list.html'
+    book=get_object_or_404(Book,pk)
+    permission_required='catalog.can_loan_book'
+    
